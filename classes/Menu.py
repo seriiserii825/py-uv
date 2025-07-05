@@ -18,7 +18,7 @@ class Menu:
         rows = [
             ["1", "Ruff format and check"],
             ["2", "Install package"],
-            ["3", "Show contact form fields with submitted fields"],
+            ["3", "Uninstall package"],
             ["4", "Exit"],
         ]
 

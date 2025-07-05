@@ -19,6 +19,11 @@ def main():
             Package.install()
         except RuntimeError as e:
             Print.error(e)
+    elif choice == 3:
+        try:
+            Package.uninstall()
+        except RuntimeError as e:
+            Print.error(e)
     if choice == 4:
         Print.error("Exiting the program.")
         return
