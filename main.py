@@ -6,15 +6,15 @@ from classes.Ruff import Ruff
 def main():
     Menu.display()
     choice = Menu.choose_option()
-    Print.print(f"choice: {choice}")
+    Print.success(f"choice: {choice}")
     if choice == 1:
         Ruff.ensure_ruff_installed()
         try:
             Ruff.format_and_check()
         except RuntimeError as e:
-            Print.print(f"Error during Ruff operation: {e}", error=True)
+            Print.error(f"Error during Ruff operation: {e}")
     if choice == 4:
-        Print.print("Exiting the program.", error=True)
+        Print.error("Exiting the program.")
         return
 
 
