@@ -25,7 +25,7 @@ class Menu:
         Menu.rows_count += len(rows)
 
         tb = MyTable()
-        tb.show("Main Menu", columns, rows, row_styles={0: "magenta"})
+        tb.show("Main Menu", columns, rows, row_styles={3: "magenta"})
 
     @staticmethod
     def choose_option():
