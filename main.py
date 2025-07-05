@@ -1,6 +1,7 @@
 from classes.Menu import Menu
 from menu.exit_menu import exit_menu
 from menu.format_and_check import format_and_check
+from menu.init import init
 from menu.install_package import install_package
 from menu.list_installed_packages import list_installed_packages
 from menu.reinstall_packages import reinstall_packages
@@ -31,6 +32,9 @@ def main():
             list_installed_packages()
             reinstall_packages()
             list_installed_packages()
+            menu()
+        elif choice == 6:
+            init()
             menu()
         if choice == 6:
             exit_menu()

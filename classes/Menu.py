@@ -21,7 +21,8 @@ class Menu:
             2: "green",
             3: "magenta",
             4: "green",
-            5: "red",
+            5: "yellow",
+            6: "red",
         }
         rows = [
             ["1", "Ruff format and check"],
@@ -29,7 +30,8 @@ class Menu:
             ["3", "Install package"],
             ["4", "Uninstall package"],
             ["5", "Reinstall packages"],
-            ["6", "Exit"],
+            ["6", "Init"],
+            ["7", "Exit"],
         ]
 
         Menu.rows_count += len(rows)
