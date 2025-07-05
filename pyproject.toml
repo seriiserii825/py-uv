@@ -2,6 +2,9 @@
 name = "my_project"
 version = "0.1.0"
 description = ""
+dependencies = [
+    "rich>=14.0.0",
+]
 
 [tool.ruff]
 line-length = 88
