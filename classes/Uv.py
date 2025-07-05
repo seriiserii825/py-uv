@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from classes.Command import Command
+from classes.Print import Print
 
 
 class Uv:
@@ -81,3 +82,20 @@ class Uv:
             hook_file.write(hook_content.strip())
         hook_path.chmod(0o755)
         os.system(f"bat --color=always {hook_path}")
+
+    @staticmethod
+    def migrate_from_requirements():
+        if not Path("requirements.txt").exists():
+            Print.error("No requirements.txt file found.")
+            return
+        try:
+            Command.run("uv add -r requirements.txt")
+            requirements_path = Path("requirements.txt")
+            Path.unlink(requirements_path)
+            Print.success("requirements.txt migrated to uv.")
+        except Exception as e:
+            Print.error(f"Error migrating requirements.txt: {e}")
+            return
+
+
+

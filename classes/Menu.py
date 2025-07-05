@@ -22,7 +22,8 @@ class Menu:
             3: "magenta",
             4: "green",
             5: "yellow",
-            6: "red",
+            6: "yellow",
+            7: "red",
         }
         rows = [
             ["1", "Ruff format and check"],
@@ -31,7 +32,8 @@ class Menu:
             ["4", "Uninstall package"],
             ["5", "Reinstall packages"],
             ["6", "Init"],
-            ["7", "Exit"],
+            ["7", "Migrate from requirements.txt to pyproject.toml"],
+            ["8", "Exit"],
         ]
 
         Menu.rows_count = 0

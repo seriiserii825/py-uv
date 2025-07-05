@@ -4,6 +4,7 @@ from menu.format_and_check import format_and_check
 from menu.init import init
 from menu.install_package import install_package
 from menu.list_installed_packages import list_installed_packages
+from menu.migrate_from_requirements import migrate_from_requirements
 from menu.reinstall_packages import reinstall_packages
 from menu.uninstall_package import uninstall_package
 
@@ -35,6 +36,9 @@ def main():
             menu()
         elif choice == 6:
             init()
+            menu()
+        elif choice == 7:
+            migrate_from_requirements()
             menu()
         if choice == 6:
             exit_menu()
