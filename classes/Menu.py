@@ -34,6 +34,7 @@ class Menu:
             ["7", "Exit"],
         ]
 
+        Menu.rows_count = 0
         Menu.rows_count += len(rows)
 
         tb = MyTable()

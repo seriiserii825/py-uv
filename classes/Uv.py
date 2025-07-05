@@ -1,5 +1,7 @@
-from classes.Command import Command
+import os
 from pathlib import Path
+
+from classes.Command import Command
 
 
 class Uv:
@@ -18,3 +20,64 @@ class Uv:
             except Exception as e:
                 print(f"Error creating virtual environment: {e}")
                 return
+
+    @staticmethod
+    def create_pyproject_toml():
+        file_content = """
+            [project]
+            name = "my_project"
+            version = "0.1.0"
+            description = ""
+
+            [tool.ruff]
+            line-length = 88
+            exclude = [
+                "migrations",
+                "tests",
+                "docs",
+                "build",
+                "dist",
+                "venv",
+                ".venv",
+                ".git",
+                "__pycache__",
+            ]
+            fix = true
+            unsafe-fixes = true
+            target-version = "py312"  # <- specify Python 3.12 explicitly here
+
+            [tool.ruff.lint]
+            select = [
+                "F401",  # Unused import
+                "F403",  # Wildcard import
+                "F405",  # Name may be undefined, or defined from star imports
+                "F841",  # Local variable is assigned to but never used
+                "E501",  # Line too long
+                "I",     # Import sorting (isort-compatible)
+            ]
+        """
+        with open("pyproject.toml", "w") as file:
+            file.write(file_content.strip())
+
+    @staticmethod
+    def pre_commit_hook():
+        hook_path = Path(".git/hooks/pre-commit")
+        hook_content = """
+            #!/usr/bin/env bash
+            echo "🔍 Running Ruff pre‑commit hook…"
+
+            if ! command -v ruff >/dev/null 2>&1; then
+              echo "❌ Ruff not found. Install it with: sudo pacman -S ruff"
+              exit 1
+            fi
+
+            ruff check . --fix || { echo "❌ Commit aborted (Ruff check)"; exit 1; }
+            ruff format .      || { echo "❌ Commit aborted (Ruff format)"; exit 1; }
+
+            echo "✅ Ruff passed. Proceeding with commit."
+            exit 0
+        """
+        with open(hook_path, "w") as hook_file:
+            hook_file.write(hook_content.strip())
+        hook_path.chmod(0o755)
+        os.system(f"bat --color=always {hook_path}")
