@@ -32,6 +32,21 @@ class Package:
             raise RuntimeError(f"Failed to uninstall package '{choosed_package}': {e}")
 
     @staticmethod
+    def reinstall_all():
+        try:
+            Command.run("rm -rf ~/.venv")
+            Package.sync()
+        except RuntimeError as e:
+            raise RuntimeError(f"Failed to reinstall all packages: {e}")
+
+    @staticmethod
+    def sync():
+        try:
+            Command.run("uv sync")
+        except RuntimeError as e:
+            raise RuntimeError(f"Failed to sync packages: {e}")
+
+    @staticmethod
     def get_uv_installed_packages() -> list[str]:
         result = subprocess.run(
             ["uv", "pip", "list", "--format=json"],
