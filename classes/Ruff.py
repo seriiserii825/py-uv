@@ -21,10 +21,11 @@ class Ruff:
     @staticmethod
     def format_and_check() -> None:
         try:
+            Print.info("🔍 Running Ruff (check + format)…")
             Command.run("ruff format .")
             Command.run("ruff check .")
-            Print.success("Ruff check and format completed successfully.")
+            Print.success("✅. Ruff check and format completed successfully.")
         except RuntimeError as err:
             # add colour *here*, after we know we’re printing to the console
-            Print.error(f"Ruff encountered an error:\n{err}")
+            print(f"Ruff encountered an error:\n{err}")
             raise

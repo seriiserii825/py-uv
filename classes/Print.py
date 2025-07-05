@@ -3,6 +3,12 @@ from rich import print
 
 class Print:
     @staticmethod
+    def info(message):
+        print("=" * 20)
+        print(f"[blue]{message}")
+        print("=" * 20)
+
+    @staticmethod
     def success(message):
         print("=" * 20)
         print(f"[green]{message}")
