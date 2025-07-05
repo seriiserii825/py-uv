@@ -2,9 +2,9 @@ from classes.Menu import Menu
 
 
 def main():
-    print("Hello, World!")
-
     Menu.display()
+    choice = Menu.choose_option()
+    print(f"choice: {choice}")
 
 
 if __name__ == "__main__":
