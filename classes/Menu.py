@@ -1,4 +1,5 @@
 from rich import print
+
 from classes.MyTable import MyTable
 
 
