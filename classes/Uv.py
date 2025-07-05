@@ -1,4 +1,5 @@
 import os
+import shutil
 from pathlib import Path
 
 from classes.Command import Command
@@ -91,11 +92,11 @@ class Uv:
         try:
             Command.run("uv add -r requirements.txt")
             requirements_path = Path("requirements.txt")
+            venv_path = Path("venv")
             Path.unlink(requirements_path)
+            if venv_path.exists():
+                shutil.rmtree(venv_path)
             Print.success("requirements.txt migrated to uv.")
         except Exception as e:
             Print.error(f"Error migrating requirements.txt: {e}")
             return
-
-
-
