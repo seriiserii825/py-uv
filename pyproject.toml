@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 dependencies = [
     "rich>=14.0.0",
+    "simple-term-menu>=1.6.6",
 ]
 
 [tool.ruff]

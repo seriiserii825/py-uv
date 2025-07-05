@@ -1,4 +1,5 @@
 from classes.Menu import Menu
+from classes.Package import Package
 from classes.Print import Print
 from classes.Ruff import Ruff
 
@@ -13,6 +14,11 @@ def main():
             Ruff.format_and_check()
         except RuntimeError as e:
             Print.error(f"Error during Ruff operation: {e}")
+    elif choice == 2:
+        try:
+            Package.install()
+        except RuntimeError as e:
+            Print.error(e)
     if choice == 4:
         Print.error("Exiting the program.")
         return

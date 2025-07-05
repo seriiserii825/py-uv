@@ -17,7 +17,7 @@ class Menu:
         ]
         rows = [
             ["1", "Ruff format and check"],
-            ["2", "Show contact form fields with required fields"],
+            ["2", "Install package"],
             ["3", "Show contact form fields with submitted fields"],
             ["4", "Exit"],
         ]
@@ -25,7 +25,7 @@ class Menu:
         Menu.rows_count += len(rows)
 
         tb = MyTable()
-        tb.show("Main Menu", columns, rows, row_styles={3: "magenta"})
+        tb.show("Main Menu", columns, rows, row_styles={1: "blue", 3: "magenta"})
 
     @staticmethod
     def choose_option():
