@@ -63,7 +63,13 @@ class Uv:
 
     @staticmethod
     def pre_commit_hook():
+        if not os.path.exists(".git/hooks/pre-commit"):
+            Print.error("No pre-commit hook found. Creating one...")
+            os.makedirs(".git/hooks", exist_ok=True)
+            os.system("touch .git/hooks/pre-commit")
+
         hook_path = Path(".git/hooks/pre-commit")
+
         hook_content = """
             #!/usr/bin/env bash
             echo "🔍 Running Ruff pre‑commit hook…"
