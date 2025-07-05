@@ -1,4 +1,5 @@
 from classes.Command import Command
+from pathlib import Path
 
 
 class Uv:
@@ -7,4 +8,13 @@ class Uv:
         """
         Create .venv directory and install uv package.
         """
-        Command.run("uv venv .venv")
+        if Path(".venv").exists():
+            print("Virtual environment already exists.")
+            return
+        else:
+            try:
+                Command.run("uv venv .venv")
+                print("Virtual environment created successfully.")
+            except Exception as e:
+                print(f"Error creating virtual environment: {e}")
+                return
