@@ -15,17 +15,25 @@ class Menu:
             {"title": "Index", "style": "cyan"},
             {"title": "Option", "style": "white"},
         ]
+        row_styles = {
+                0: "blue",
+                1: "blue",
+                2: "green",
+                3: "magenta",
+                4: "red",
+                }
         rows = [
             ["1", "Ruff format and check"],
-            ["2", "Install package"],
-            ["3", "Uninstall package"],
-            ["4", "Exit"],
+            ["2", "List installed packages"],
+            ["3", "Install package"],
+            ["4", "Uninstall package"],
+            ["5", "Exit"],
         ]
 
         Menu.rows_count += len(rows)
 
         tb = MyTable()
-        tb.show("Main Menu", columns, rows, row_styles={1: "blue", 3: "magenta"})
+        tb.show("Main Menu", columns, rows, row_styles=row_styles)
 
     @staticmethod
     def choose_option():

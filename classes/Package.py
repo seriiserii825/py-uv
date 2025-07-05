@@ -1,13 +1,19 @@
 import json
 import subprocess
+
+from pyfzf.pyfzf import FzfPrompt
+
 from classes.Command import Command
 from classes.InputValidator import InputValidator
-from pyfzf.pyfzf import FzfPrompt
 
 fzf = FzfPrompt()
 
 
 class Package:
+    @staticmethod
+    def list_installed():
+        Command.run("uv pip list")
+
     @staticmethod
     def install():
         package_name = InputValidator.get_string("Enter the package name to install: ")
