@@ -16,12 +16,12 @@ class Menu:
             {"title": "Option", "style": "white"},
         ]
         row_styles = {
-                0: "blue",
-                1: "blue",
-                2: "green",
-                3: "magenta",
-                4: "red",
-                }
+            0: "blue",
+            1: "blue",
+            2: "green",
+            3: "magenta",
+            4: "red",
+        }
         rows = [
             ["1", "Ruff format and check"],
             ["2", "List installed packages"],
