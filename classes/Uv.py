@@ -1,4 +1,5 @@
 import os
+import textwrap
 import shutil
 from pathlib import Path
 
@@ -25,7 +26,7 @@ class Uv:
 
     @staticmethod
     def create_pyproject_toml():
-        file_content = """
+        file_content = textwrap.dedent("""
             [project]
             name = "my_project"
             version = "0.1.0"
@@ -57,7 +58,7 @@ class Uv:
                 "E501",  # Line too long
                 "I",     # Import sorting (isort-compatible)
             ]
-        """
+        """)
         with open("pyproject.toml", "w") as file:
             file.write(file_content.strip())
 
@@ -106,3 +107,15 @@ class Uv:
         except Exception as e:
             Print.error(f"Error migrating requirements.txt: {e}")
             return
+
+    @staticmethod
+    def remove_git_hook():
+        hook_path = Path(".git/hooks/pre-commit")
+        if hook_path.exists():
+            try:
+                hook_path.unlink()
+                Print.success("Git pre-commit hook removed successfully.")
+            except Exception as e:
+                Print.error(f"Error removing git pre-commit hook: {e}")
+        else:
+            Print.error("No git pre-commit hook found to remove.")

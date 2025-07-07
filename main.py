@@ -6,6 +6,7 @@ from menu.install_package import install_package
 from menu.list_installed_packages import list_installed_packages
 from menu.migrate_from_requirements import migrate_from_requirements
 from menu.reinstall_packages import reinstall_packages
+from menu.remove_git_hook import remove_git_hook
 from menu.uninstall_package import uninstall_package
 
 
@@ -40,7 +41,10 @@ def main():
         elif choice == 7:
             migrate_from_requirements()
             menu()
-        if choice == 6:
+        elif choice == 8:
+            remove_git_hook()
+            menu()
+        if choice == 9:
             exit_menu()
 
     menu()
