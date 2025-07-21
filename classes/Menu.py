@@ -29,6 +29,7 @@ class Menu:
         rows = [
             ["1", "Ruff format and check"],
             ["2", "List installed packages"],
+            ["2.1", "Install package from pyproject.toml"],
             ["3", "Install package"],
             ["4", "Uninstall package"],
             ["5", "Reinstall packages"],
@@ -52,13 +53,13 @@ class Menu:
         while True:
             try:
                 count_range = f"Please enter a number between 1 and {Menu.rows_count}: "
-                choice = int(input(count_range))
-                if choice in range(1, Menu.rows_count + 1):
+                choice = float(input(count_range))
+                if 1 <= choice <= Menu.rows_count:
                     return choice
                 else:
                     print(
-                        f"[red]Invalid input."
-                        f"Please enter a number between 1 and {Menu.rows_count}."
+                        f"[red]Input must be between 1 and {Menu.rows_count}."
+                        f" Please try again.[/red]"
                     )
             except ValueError:
                 print("[red] Input must be a number. Please try again.[/red]")

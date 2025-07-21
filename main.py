@@ -2,6 +2,7 @@ from classes.Menu import Menu
 from menu.exit_menu import exit_menu
 from menu.format_and_check import format_and_check
 from menu.init import init
+from menu.install_from_toml import install_from_toml
 from menu.install_package import install_package
 from menu.list_installed_packages import list_installed_packages
 from menu.migrate_from_requirements import migrate_from_requirements
@@ -18,6 +19,11 @@ def main():
             format_and_check()
             menu()
         elif choice == 2:
+            list_installed_packages()
+            menu()
+        elif choice == 2.1:
+            list_installed_packages()
+            install_from_toml()
             list_installed_packages()
             menu()
         elif choice == 3:
