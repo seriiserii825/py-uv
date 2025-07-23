@@ -13,13 +13,12 @@ class Uv:
         """
         Create .venv directory and install uv package.
         """
-        if Path(".venv").exists():
-            print("Virtual environment already exists.")
+        if Path("pyproject.toml").exists():
+            print("pyproject.toml already exists. Skipping creation.")
             return
         else:
             try:
-                Command.run("uv venv .venv")
-                print("Virtual environment created successfully.")
+                Uv.create_pyproject_toml()
             except Exception as e:
                 print(f"Error creating virtual environment: {e}")
                 return
