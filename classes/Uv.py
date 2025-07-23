@@ -18,6 +18,7 @@ class Uv:
             return
         else:
             try:
+                Command.run("uv init .")
                 Uv.create_pyproject_toml()
             except Exception as e:
                 print(f"Error creating virtual environment: {e}")
